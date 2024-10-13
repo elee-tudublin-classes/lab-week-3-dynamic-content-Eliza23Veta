@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<!-- Load common head content, including the favicon link -->
+    {% include "./partials/head.html" ignore missing with context %}
+    <title>Astronomical Picture of the Day</title>
+</head>
+
+<body>
+    <h1>Astronomical Picture of the Day</h1>
+
+<h2>{{ data.title }}</h2>
+<p><strong>Date:</strong> {{ data.date }}</p>
+
+{% if data.media_type == 'image' %}
+    <img src="{{ data.url }}" alt="{{ data.title }}" style="max-width: 100%; height: auto;">
+{% elif data.media_type == 'video' %}
+    <iframe width="100%" height="500" src="{{ data.url }}" frameborder="0" allowfullscreen></iframe>
+{% endif %}
+
+<p>{{ data.explanation }}</p>
+
+</body>
+
+</html>
